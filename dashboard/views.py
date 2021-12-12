@@ -17,7 +17,7 @@ def notes(request):
      else:
           form = NotesForm()
      notes=Notes.objects.filter(user=request.user)
-     context={'notes':notes,'form':form}
+     c
      return render(request,'dashboard/notes.html',context)
 def delete_note(request,pk=None):   
      Notes.objects.get(id=pk).delete()
@@ -27,4 +27,6 @@ class NotesDetailView(generic.DetailView):
      model=Notes 
 
 def homework(request):
-     return render(request,'dashboard/homework.html')       
+     homework=Homework.objects.filter(user=request.user)
+     context={'homeworks':homework}
+     return render(request,'dashboard/homework.html', context)       
