@@ -48,7 +48,7 @@
                 <a class="dropdown-item" href="#">To-do</a>
                 <a class="dropdown-item" href="#">Homework</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Notes</a>
+                <a class="dropdown-item" href=<"http://127.0.0.1:8000/notes">Notes</a>
                 <a class="dropdown-item" href="#">Conversion</a>
                 <div class="dropdown-divider"></div>
               </div>
@@ -70,9 +70,18 @@
   </header>
   <br /><br />
   <main>
+  
+   {% if messages %}
+     {% for msg in massages %}
+   
+        <div class="alert alert-{{msg.tags}}">{{msg}}</div>
 
-    {% block content %}
-    {% endblock content %}
+      {% endfor%}
+    {% endif %}
+
+ 
+  {% block content %}
+  {% endblock content %}
 
   </main>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
